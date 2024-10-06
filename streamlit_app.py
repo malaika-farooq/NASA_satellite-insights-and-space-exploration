@@ -33,6 +33,19 @@ def generate_space_chatbot_response(user_input):
     )
     return chat_completion.choices[0].message.content
 
+# Satellite Data Summarizer Prompt
+def summarize_satellite_data(data):
+    prompt = f"""
+    Summarize the following satellite data into an understandable insight for the public, focusing on key changes or trends related to space, earth monitoring, or atmospheric conditions:
+    {data}
+    """
+    chat_completion = client.chat.completions.create(
+        model="o1-mini",  # You can change this to "o1-preview" if needed
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=2000
+    )
+    return chat_completion.choices[0].message.content
+
 # Create a session state variable to store the chat messages.
 if "messages" not in st.session_state:
     st.session_state.messages = []
