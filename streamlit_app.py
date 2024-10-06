@@ -40,7 +40,7 @@ def summarize_satellite_data(data):
     {data}
     """
     chat_completion = client.chat.completions.create(
-        model="o1-mini",  # You can change this to "o1-preview" if needed
+        model="o1-preview",  # You can change this to "o1-preview" if needed
         messages=[{"role": "user", "content": prompt}],
         max_tokens=2000
     )
